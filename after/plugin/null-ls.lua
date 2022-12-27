@@ -1,12 +1,8 @@
-local nls = require('null-ls')
+local null_ls = require('null-ls')
 
-local formatting = nls.builtins.formatting
-local diagnostics = nls.builtins.diagnostics
-
-nls.setup({
-	debug = false,
+null_ls.setup({
 	sources = {
-		formatting.prettier,
-		diagnostics.eslint
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.diagnostics.eslint
 	}
 })

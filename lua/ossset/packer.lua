@@ -45,17 +45,34 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'},
 	  }
 }
+use "kyazdani42/nvim-web-devicons"
+use 'nvim-tree/nvim-web-devicons'
 use 'tpope/vim-surround'
+use "jose-elias-alvarez/null-ls.nvim"
+
 use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+        require("trouble").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    end
 }
-use({
-	"jose-elias-alvarez/null-ls.nvim",
-	config = function()
-		require("null-ls").setup()
-	end,
-	requires = { "nvim-lua/plenary.nvim" },
-})
+
+use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+}
+
+use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
 end)
 
